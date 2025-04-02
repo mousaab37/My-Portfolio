@@ -6,11 +6,11 @@ const Contact = () => {
     <div className="py-16 max-w-[1200px] mx-auto" id="contact">
       <div className="flex items-center justify-between flex-col md:flex-row">
         <div>
-          <h2 className="md:text-7xl text-4xl font-bold mb-10 text-white/70">
+          <h2 className="md:text-7xl text-3xl font-bold mb-10 text-white/70">
             Get in <span>touch</span>
           </h2>
           <a
-            className="md:text-5xl text-4xl font-semibold text-white underline decoration-gray-400 decoration-2
+            className="md:text-5xl text-2xl font-semibold text-white underline decoration-gray-400 decoration-2
                                     underline-offset-4 hover:decoration-orange-300 transition duration-300"
             href="mailto:mosaiabal@gmail.com"
           >

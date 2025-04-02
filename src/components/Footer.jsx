@@ -9,11 +9,9 @@ import logo from "../assets/Mylogo2.png";
 
 const Footer = () => {
   return (
-    <footer className="relative py-8 max-w-[1200px] mx-auto px-4">
+    <footer className="relative py-8 max-w-[1000px] mx-auto px-3">
       <div className="md:hidden absolute inset-0 overflow-hidden -z-10">
         <div className="absolute top-[30%] left-[20%] w-[100px] h-[100px] bg-purple-300 rounded-full opacity-30 transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute top-[50%] left-[55%] w-[150px] h-[70px] bg-purple-900 rounded-full opacity-50 transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute top-[40%] right-[0%] w-[80px] h-[100px] bg-purple-600 rounded-full opacity-30 transform -translate-x-1/2 -translate-y-1/2"></div>
       </div>
 
       <div className="hidden md:block absolute inset-0 overflow-hidden -z-10">
@@ -26,7 +24,7 @@ const Footer = () => {
         <h1 className="hidden md:block lg:text-[15rem] md:text-[12rem] font-bold text-white/10">
           MOSAAB
         </h1>
-        <h1 className="md:hidden mb-12 relative text-8xl font-bold text-white/10">
+        <h1 className="md:hidden mb-12 relative text-6xl font-bold text-white/10">
           MOSAAB
         </h1>
       </div>
