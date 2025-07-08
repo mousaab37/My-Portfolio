@@ -6,11 +6,11 @@ A professional portfolio showcasing my expertise in full-stack development and L
 
 - Interactive UI: Smooth animations and responsive design
 - Technical Showcase: Detailed presentation of skills and certifications
-- Modern Stack: Built with React.js + Tailwind CSS
+- Modern Stack: Built with Next.js + Tailwind CSS
 
 ## 🔧 Technologies Used
 
-- React, Tailwind CSS
+- Next, Tailwind CSS
 
 ## 🌐 Connect With Me
 
