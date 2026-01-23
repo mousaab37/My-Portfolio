@@ -7,9 +7,20 @@ import {
 } from "react-icons/ai";
 import logo from "../assets/Mylogo2.png";
 
+import { useLanguage } from "../context/languageContext"; // Added for language support
+
 const Footer = () => {
+  const { language } = useLanguage();
+
+  const translations = {
+    en: { name: "Mosaab", bigName: "MOSAAB" },
+    ar: { name: "مصعب", bigName: "مصعب" }
+  };
+
+  const t = translations[language];
+
   return (
-    <footer className="relative py-8 max-w-[1000px] mx-auto px-3">
+    <footer className="relative py-8  max-w-[1200px] mx-auto ">
       <div className="md:hidden absolute inset-0 overflow-hidden -z-10">
         <div className="absolute top-[30%] left-[20%] w-[100px] h-[100px] bg-purple-300 rounded-full opacity-30 transform -translate-x-1/2 -translate-y-1/2"></div>
       </div>
@@ -21,11 +32,11 @@ const Footer = () => {
       </div>
 
       <div className="relative z-10 text-center mt-8">
-        <h1 className="hidden md:block lg:text-[15rem] md:text-[12rem] font-bold text-white/10">
-          MOSAAB
+        <h1 className="hidden md:block lg:text-[15rem] md:text-[12rem] font-bold text-white/10 uppercase">
+          {t.bigName}
         </h1>
-        <h1 className="md:hidden mb-12 relative text-6xl font-bold text-white/10">
-          MOSAAB
+        <h1 className="md:hidden mb-12 relative text-6xl font-bold text-white/10 uppercase">
+          {t.bigName}
         </h1>
       </div>
 
@@ -37,7 +48,7 @@ const Footer = () => {
             className="h-6 w-auto"
           />
           <span className="text-white font-medium text-lg">
-            Mosaab
+            {t.name}
           </span>
         </div>
 

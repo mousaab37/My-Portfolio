@@ -77,8 +77,76 @@ const projects = [
   },
 ];
 
+import { useLanguage } from "../context/languageContext"; // Added for language support
+
 const Portfolio = () => {
   const [currentProject, setCurrentProject] = useState(0);
+  const { language } = useLanguage();
+
+  const translations = {
+    en: {
+      selectProject: "Select Project",
+      demo: "Demo",
+      projects: [
+        {
+          title: "World Wise",
+          description: "WorldWise keeps track of your adventures.",
+        },
+        {
+          title: "Mapty",
+          description: "A Javascript map application to Map your workout.",
+        },
+        {
+          title: "usePopcorn",
+          description: "A website to find and save your favorite movies.",
+        },
+        {
+          title: "First Portfolio",
+          description: "This is my first portfolio - modern and simple",
+        },
+        {
+          title: "Bankist",
+          description: "A simpler banking experience for a simpler life.",
+        },
+        {
+          title: "Kasper",
+          description: "A demo landing page for a fake company.",
+        },
+      ]
+    },
+    ar: {
+      selectProject: "اختر المشروع",
+      demo: "عرض مباشر",
+      projects: [
+        {
+          title: "World Wise",
+          description: "تطبيق لتتبع مغامراتك ورحلاتك حول العالم.",
+        },
+        {
+          title: "Mapty",
+          description: "تطبيق جافا سكريبت لرسم خرائط تمارينك الرياضية.",
+        },
+        {
+          title: "usePopcorn",
+          description: "موقع للبحث عن أفلامك المفضلة وحفظها.",
+        },
+        {
+          title: "أول معرض أعمال",
+          description: "هذا هو أول معرض أعمال قمت ببرمجته - عصري وبسيط.",
+        },
+        {
+          title: "Bankist",
+          description: "تجربة مصرفية أبسط لحياة أسهل.",
+        },
+        {
+          title: "Kasper",
+          description: "صفحة هبوط تجريبية لشركة.",
+        },
+      ]
+    }
+  };
+
+  const t = translations[language];
 
   return (
     <div
@@ -87,23 +155,22 @@ const Portfolio = () => {
     >
       <div className="relative z-10 col-span-1 md:col-span-3 grid place-items-center">
         <p className="text-gray-200 md:mb-[-100px] mb-10 font-bold text-4xl -skew-y-6">
-          Select Project
+          {t.selectProject}
         </p>
         <img
           src={arrow}
-          className="absolute hidden md:block w-[100px] top-24 right-9"
+          className={`absolute hidden md:block w-[100px] top-24 ${language === 'en' ? 'right-9' : 'left-9 transform scale-x-[-1]'}`} // Flip arrow for RTL
           alt="arrow"
         />
-        <ul className="ml-6 flex flex-row md:flex-col gap-6 flex-wrap justify-center md:gap-1 mb-11 md:space-y-4 text-2xl">
+        <ul className="ml-6 mr-6 flex flex-row md:flex-col gap-6 flex-wrap justify-center md:gap-1 mb-11 md:space-y-4 text-2xl">
           {projects.map((project, index) => (
             <li
               key={index}
               onClick={() => setCurrentProject(index)}
-              className={`cursor-pointer text-gray-300 ${
-                currentProject === index ? "active-project" : ""
-              }`}
+              className={`cursor-pointer text-gray-300 ${currentProject === index ? "active-project" : ""
+                }`}
             >
-              {project.title}
+              {t.projects[index].title}
             </li>
           ))}
         </ul>
@@ -113,12 +180,12 @@ const Portfolio = () => {
         <div className="w-full h-80 mb-4">
           <img
             src={projects[currentProject].img}
-            alt={projects[currentProject].title}
+            alt={t.projects[currentProject].title}
             className="w-full h-full object-cover rounded-lg mx-auto"
           />
         </div>
         <div className="p-6">
-          <div className="flex space-x-2 mb-4">
+          <div className="flex space-x-2 rtl:space-x-reverse mb-4">
             {projects[currentProject].tools.map((tool, index) => (
               <span
                 key={index}
@@ -130,10 +197,10 @@ const Portfolio = () => {
           </div>
 
           <p className="text-gray-200 my-4 ">
-            {projects[currentProject].description}
+            {t.projects[currentProject].description}
           </p>
 
-          <div className="flex space-x-4 ">
+          <div className="flex space-x-4 rtl:space-x-reverse">
             {projects[currentProject].links.site && (
               <a
                 href={projects[currentProject].links.site}
@@ -141,7 +208,7 @@ const Portfolio = () => {
                 rel="noopener noreferrer"
                 className="px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300"
               >
-                Demo
+                {t.demo}
               </a>
             )}
             <a

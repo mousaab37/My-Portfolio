@@ -4,16 +4,17 @@ import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Portfolio from "./components/Portfolio";
+import { LanguageProvider } from "./context/languageContext"; // Added for language support
 
 export default function App() {
   return (
-    <>
-      <Navbar/>
-      <Hero/>
-      <About/>
-      <Portfolio/>
-      <Contact/>
-      <Footer/>
-    </>
+    <LanguageProvider> {/* Added LanguageProvider wrapper */}
+      <Navbar />
+      <Hero />
+      <About />
+      <Portfolio />
+      <Contact />
+      <Footer />
+    </LanguageProvider>
   )
 }
