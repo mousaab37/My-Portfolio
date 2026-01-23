@@ -67,7 +67,7 @@ const Navbar = () => {
              transition-colors duration-300 cursor-pointer
              hover:bg-orange-500 hover:text-white"
         >
-          {t.toggle === "English" ? "Ar" : "En"}
+          {t.toggle === "English" ? "En" : "ع"}
         </button>
 
       </div>
