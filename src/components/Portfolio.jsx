@@ -7,12 +7,7 @@ import project5 from "../assets/project5.png";
 import project6 from "../assets/project6.png";
 import arrow from "../assets/cursor.png";
 import { AiFillGithub } from "react-icons/ai";
-import {
-  DiReact,
-  DiJavascript,
-  DiHtml5,
-  DiCss3,
-} from "react-icons/di";
+import { DiReact, DiJavascript, DiHtml5, DiCss3 } from "react-icons/di";
 import { SiLeaflet } from "react-icons/si";
 
 const projects = [
@@ -112,7 +107,7 @@ const Portfolio = () => {
           title: "Kasper",
           description: "A demo landing page for a fake company.",
         },
-      ]
+      ],
     },
     ar: {
       selectProject: "اختر المشروع",
@@ -142,8 +137,8 @@ const Portfolio = () => {
           title: "Kasper",
           description: "صفحة هبوط تجريبية لشركة.",
         },
-      ]
-    }
+      ],
+    },
   };
 
   const t = translations[language];
@@ -159,16 +154,18 @@ const Portfolio = () => {
         </p>
         <img
           src={arrow}
-          className={`absolute hidden md:block w-[100px] top-24 ${language === 'en' ? 'right-9' : 'left-9 transform scale-x-[-1]'}`} // Flip arrow for RTL
+          className={`absolute hidden md:block w-[100px] top-24 ${language === "en" ? "right-9" : "left-9 transform scale-x-[-1]"}`} // Flip arrow for RTL
           alt="arrow"
+          loading="lazy"
         />
         <ul className="ml-6 mr-6 flex flex-row md:flex-col gap-6 flex-wrap justify-center md:gap-1 mb-11 md:space-y-4 text-2xl">
           {projects.map((project, index) => (
             <li
               key={index}
               onClick={() => setCurrentProject(index)}
-              className={`cursor-pointer text-gray-300 ${currentProject === index ? "active-project" : ""
-                }`}
+              className={`cursor-pointer text-gray-300 ${
+                currentProject === index ? "active-project" : ""
+              }`}
             >
               {t.projects[index].title}
             </li>
@@ -182,6 +179,7 @@ const Portfolio = () => {
             src={projects[currentProject].img}
             alt={t.projects[currentProject].title}
             className="w-full h-full object-cover rounded-lg mx-auto"
+            loading="lazy"
           />
         </div>
         <div className="p-6">

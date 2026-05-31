@@ -46,6 +46,7 @@ const Footer = () => {
             src={logo}
             alt="Mosaab's Logo"
             className="h-6 w-auto"
+            loading="lazy"
           />
           <span className="text-white font-medium text-lg">
             {t.name}

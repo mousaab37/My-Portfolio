@@ -119,6 +119,7 @@ const About = () => {
               src={code}
               alt="Project"
               className="rounded-lg w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
         </div>
@@ -230,6 +231,7 @@ const About = () => {
               src={Certifications}
               alt="Training Certifications"
               className="w-full h-full rounded-md object-cover"
+              loading="lazy"
             />
           </div>
           <h3 className="text-2xl font-bold my-4">
