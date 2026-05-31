@@ -59,16 +59,29 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Language Toggle Button */}
-        <button
-          onClick={toggleLanguage}
-          className="mt-2 px-3 py-1 text-sm font-medium 
-             text-gray-200 border border-orange-500 rounded-lg 
-             transition-colors duration-300 cursor-pointer
-             hover:bg-orange-500 hover:text-white"
-        >
-          {t.toggle === "English" ? "En" : "ع"}
-        </button>
+        {/* Modern Segmented Language Switcher */}
+        <div className="flex items-center bg-white/5 border border-white/10 rounded-full p-1 backdrop-blur-md select-none">
+          <button
+            onClick={() => language === "ar" && toggleLanguage()}
+            className={`px-3 py-1 text-xs font-bold rounded-full transition-all duration-300 cursor-pointer ${
+              language === "en"
+                ? "bg-gradient-to-r from-[#7a0d8a] to-[#c92085] text-white shadow-md"
+                : "text-gray-400 hover:text-white"
+            }`}
+          >
+            EN
+          </button>
+          <button
+            onClick={() => language === "en" && toggleLanguage()}
+            className={`px-3 py-1 text-xs font-bold rounded-full transition-all duration-300 cursor-pointer ${
+              language === "ar"
+                ? "bg-gradient-to-r from-[#c92085] to-[#c68109] text-white shadow-md font-sans"
+                : "text-gray-400 hover:text-white"
+            }`}
+          >
+            عربي
+          </button>
+        </div>
 
       </div>
 
