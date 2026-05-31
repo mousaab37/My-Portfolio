@@ -35,7 +35,7 @@ const Hero = () => {
       experience: "With 1+ year of experience",
       download: "Download CV",
       cvName: "Mosaab_CV.pdf",
-      techStack: "My Tech Stack"
+      techStack: "My Tech Stack",
     },
     ar: {
       hi: "مرحباً! أنا مصعب",
@@ -43,8 +43,8 @@ const Hero = () => {
       experience: "بخبرة تزيد عن سنة",
       download: "تحميل السيرة الذاتية",
       cvName: "السيرة_الذاتية_مصعب.pdf",
-      techStack: "تقنياتي"
-    }
+      techStack: "تقنياتي",
+    },
   };
 
   const t = translations[language];
@@ -60,16 +60,16 @@ const Hero = () => {
           src={profilepic}
           alt="profile pic"
         />
-        <div className={`flex flex-col text-gray-200 space-y-4 my-auto ${language === 'en' ? 'md:ml-8' : 'md:mr-8'}`}> {/* Conditional margin for RTL */}
+        <div
+          className={`flex flex-col text-gray-200 space-y-4 my-auto ${language === "en" ? "md:ml-8" : "md:mr-8"}`}
+        >
+          {" "}
+          {/* Conditional margin for RTL */}
           <p className="text-2xl md:text-4xl font-bold text-center md:text-left rtl:text-right">
             {t.hi} <br />
             <TypeAnimation
               key={language} // Force re-render on language change to update animation
-              sequence={[
-                t.roles[0], 1000,
-                t.roles[1], 1000,
-                t.roles[2], 1000,
-              ]}
+              sequence={[t.roles[0], 1000, t.roles[1], 1000, t.roles[2], 1000]}
               wrapper="span"
               speed={50}
               repeat={Infinity}

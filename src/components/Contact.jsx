@@ -19,7 +19,7 @@ const Contact = () => {
       emailPlaceholder: "your@email.com",
       subjectPlaceholder: "What is this about?",
       messagePlaceholder: "Your message here ...",
-      submit: "→"
+      submit: "→",
     },
     ar: {
       getIn: "تواصل",
@@ -33,8 +33,8 @@ const Contact = () => {
       emailPlaceholder: "بريدك الإلكتروني",
       subjectPlaceholder: "ما هو موضوع الرسالة؟",
       messagePlaceholder: "اكتب رسالتك هنا ...",
-      submit: "←"
-    }
+      submit: "←",
+    },
   };
 
   const t = translations[language];
