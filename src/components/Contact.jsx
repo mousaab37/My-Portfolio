@@ -20,6 +20,7 @@ const Contact = () => {
       subjectPlaceholder: "What is this about?",
       messagePlaceholder: "Your message here ...",
       submit: "→",
+      formSubtitle: "Tell me about your project — I'll reply within a day.",
     },
     ar: {
       getIn: "تواصل",
@@ -34,6 +35,7 @@ const Contact = () => {
       subjectPlaceholder: "ما هو موضوع الرسالة؟",
       messagePlaceholder: "اكتب رسالتك هنا ...",
       submit: "←",
+      formSubtitle: "أخبرني عن مشروعك — سأرد خلال يوم واحد.",
     },
   };
 
@@ -41,33 +43,31 @@ const Contact = () => {
 
   return (
     <div className="py-16 max-w-[1200px] mx-auto" id="contact">
-      <div className="flex items-center justify-between flex-col md:flex-row  md:px-0">
+      <div className="flex flex-col items-center justify-between md:flex-row md:px-0">
         <div className="rtl:text-right">
-          <h2 className="md:text-7xl text-3xl font-bold mb-10 text-white/70">
+          <h2 className="mb-10 text-3xl font-bold md:text-7xl text-white/70">
             {t.getIn} <span>{t.touch}</span>
           </h2>
           <a
-            className="md:text-5xl text-2xl font-semibold text-white underline decoration-gray-400 decoration-2
-                                    underline-offset-4 hover:decoration-orange-300 transition duration-300"
+            className="text-2xl font-semibold text-white underline transition duration-300 md:text-5xl decoration-gray-400 decoration-2 underline-offset-4 hover:decoration-[#c92085]"
             href="mailto:mosaiabal@gmail.com"
           >
             mosaiabal@gmail.com
           </a>
         </div>
 
-        <div className="text-white/50 mt-12 rtl:text-right">
+        <div className="mt-12 text-white/50 rtl:text-right">
           <div className="mb-8">
-            <p className="text-lg mb-1">{t.phone}</p>
+            <p className="mb-1 text-lg">{t.phone}</p>
             <a
               href="tel:+963995537002"
-              className="text-2xl font-semibold underline decoration-purple-300 decoration-2
-                underline-offset-4 hover:decoration-gray-400 transition duration-300"
+              className="text-2xl font-semibold underline transition duration-300 decoration-purple-300 decoration-2 underline-offset-4 hover:decoration-gray-400"
             >
               +963 995537002
             </a>
             <div className="flex items-center gap-4 mt-3 rtl:justify-end">
               <a
-                className="text-2xl font-semibold text-gray-400 hover:text-sky-400 transition duration-300"
+                className="text-2xl font-semibold text-gray-400 transition duration-300 hover:text-[#c92085]"
                 href="https://t.me/MouSaaB_KS"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -75,7 +75,7 @@ const Contact = () => {
                 <RiTelegram2Fill />
               </a>
               <a
-                className="text-2xl font-semibold text-gray-400 hover:text-green-300 transition duration-300"
+                className="text-2xl font-semibold text-gray-400 transition duration-300 hover:text-[#c68109]"
                 href="https://api.whatsapp.com/send?phone=963995537002&text="
                 target="_blank"
                 rel="noopener noreferrer"
@@ -85,7 +85,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="text-lg mb-8">
+          <div className="mb-8 text-lg">
             <p className="font-bold">{t.country}</p>
             <p>{t.syria}</p>
           </div>
@@ -98,11 +98,14 @@ const Contact = () => {
         id="form"
         className="max-w-[1200px] mx-auto flex flex-wrap justify-between"
       >
+        <p className="w-full mb-8 bg-gradient-to-r from-[#7a0d8a] via-[#c92085] to-[#c68109] bg-clip-text text-transparent font-semibold text-lg md:text-xl text-center md:text-left rtl:text-right">
+          {t.formSubtitle}
+        </p>
         <div className="md:w-[48%] w-full space-y-6">
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-orange-300 mb-2 rtl:text-right"
+              className="block mb-2 text-sm font-medium bg-gradient-to-r from-[#7a0d8a] via-[#c92085] to-[#c68109] bg-clip-text text-transparent rtl:text-right"
             >
               {t.emailLabel}
             </label>
@@ -112,14 +115,13 @@ const Contact = () => {
               name="email"
               placeholder={t.emailPlaceholder}
               required
-              className="w-full px-4 py-3 bg-transparent border border-white/20 rounded-lg text-white focus:outline-none
-                                        focus:ring-2 focus:ring-orange-300 rtl:text-right"
+              className="w-full px-4 py-3 text-white bg-transparent border rounded-xl border-white/20 focus:outline-none focus:ring-2 focus:ring-[#c92085] rtl:text-right"
             />
           </div>
           <div>
             <label
               htmlFor="subject"
-              className="block text-sm font-medium text-orange-300 mb-2 rtl:text-right"
+              className="block mb-2 text-sm font-medium bg-gradient-to-r from-[#7a0d8a] via-[#c92085] to-[#c68109] bg-clip-text text-transparent rtl:text-right"
             >
               {t.subjectLabel}
             </label>
@@ -129,8 +131,7 @@ const Contact = () => {
               name="subject"
               placeholder={t.subjectPlaceholder}
               required
-              className="w-full px-4 py-3 bg-transparent border text-white border-white/20 rounded-lg focus:outline-none
-                                        focus:ring-2 focus:ring-orange-300 rtl:text-right"
+              className="w-full px-4 py-3 text-white bg-transparent border rounded-xl border-white/20 focus:outline-none focus:ring-2 focus:ring-[#c92085] rtl:text-right"
             />
           </div>
         </div>
@@ -138,7 +139,7 @@ const Contact = () => {
         <div className="md:w-[48%] w-full  mt-6 md:mt-0">
           <label
             htmlFor="message"
-            className="block text-sm font-medium text-gray-300 mb-2 rtl:text-right"
+            className="block mb-2 text-sm font-medium bg-gradient-to-r from-[#7a0d8a] via-[#c92085] to-[#c68109] bg-clip-text text-transparent rtl:text-right"
           >
             {t.messageLabel}
           </label>
@@ -148,17 +149,14 @@ const Contact = () => {
             rows={8}
             required
             placeholder={t.messagePlaceholder}
-            className="w-full px-4 py-3 bg-transparent border border-white/20 rounded-lg focus:outline-none
-                                    focus:ring-2 focus:ring-purple-300 text-white rtl:text-right"
+            className="w-full px-4 py-3 text-white bg-transparent border rounded-xl border-white/20 focus:outline-none focus:ring-2 focus:ring-[#c92085] rtl:text-right"
           />
         </div>
 
         <div className="md:w-[48%] w-full  mt-6 md:mt-4 md:text-right rtl:md:text-left">
           <button
             type="submit"
-            className="inline-block w-16 h-16 bg-transparent border border-orange-400 text-orange-400
-                                        font-medium rounded-lg hover:bg-orange-700 hover:text-white transition duration-300 ease-in-out
-                                        transform hover:scale-105"
+            className="inline-block w-16 h-16 font-medium text-white transition duration-300 ease-in-out transform bg-gradient-to-r from-[#7a0d8a] to-[#c92085] border border-transparent rounded-xl hover:from-[#8b1fa0] hover:to-[#db3296] hover:scale-105"
           >
             {t.submit}
           </button>

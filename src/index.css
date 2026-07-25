@@ -1,20 +1,19 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100..700&family=Inter:wght@100..900&family=Noto+Sans:ital@0;1&family=Space+Grotesk:wght@300..700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Space Grotesk", "IBM Plex Sans Arabic", sans-serif;
   background-color: #151515;
 }
 
-/* Apply IBM Plex Sans Arabic when page language is set to Arabic */
+/* Apply IBM Plex Sans Arabic when the page language is set to Arabic */
 html[lang="ar"] body,
 html[lang="ar"] button,
 html[lang="ar"] input,
 html[lang="ar"] select,
 html[lang="ar"] textarea {
-  font-family: "IBMPlexSansArabic-SemiBold", "IBM Plex Sans Arabic", sans-serif;
+  font-family: "IBM Plex Sans Arabic", "Space Grotesk", sans-serif;
 }
 
 h2 {
@@ -24,6 +23,7 @@ h2 {
 p {
   @apply text-xl tracking-tight leading-relaxed;
 }
+
 span,
 primary-color {
   background-image: linear-gradient(
@@ -43,7 +43,7 @@ primary-color {
     rgba(255, 255, 255, 0)
   );
   backdrop-filter: blur(10px);
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
@@ -70,12 +70,24 @@ primary-color {
   left: 0;
   width: 100%;
   height: 4px;
-  background-color: #d3208b;
+  background: linear-gradient(to right, #7a0d8a, #c92085);
   bottom: -6px;
 }
 
 .active-project::after {
-  background-color: #fda000;
+  background: linear-gradient(to right, #c92085, #c68109);
   width: 80%;
   bottom: -10px;
+}
+
+/* Respect users who prefer reduced motion (kills TypeAnimation & gradients) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

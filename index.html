@@ -2,16 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="./src/assets/MyLogo1.png"
-    />
+    <link rel="icon" type="image/webp" href="/MyLogo1.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#151515" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
+      name="description"
+      content="I build fast, reliable websites that help small businesses get more leads and sales online. Web development, SEO, and hosting."
     />
-    <title>Mosaab</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://en-mosaab.netlify.app/" />
+    <meta property="og:title" content="Mosaab — Web Developer Helping Businesses Grow Online" />
+    <meta property="og:description" content="I build fast, reliable websites that help small businesses get more leads and sales online. Web development, SEO, and hosting." />
+    <meta property="og:image" content="/PLAYA.webp" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://en-mosaab.netlify.app/" />
+    <meta name="twitter:title" content="Mosaab — Web Developer Helping Businesses Grow Online" />
+    <meta name="twitter:description" content="I build fast, reliable websites that help small businesses get more leads and sales online. Web development, SEO, and hosting." />
+    <meta name="twitter:image" content="/PLAYA.webp" />
+
+    <!-- Preload the LCP hero image -->
+    <link
+      rel="preload"
+      as="image"
+      href="/PLAYA.webp"
+      fetchpriority="high"
+    />
+
+    <title>Mosaab — Web Developer Helping Businesses Grow Online</title>
   </head>
   <body>
     <div id="root"></div>

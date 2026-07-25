@@ -1,222 +1,137 @@
-import React, { useState } from "react";
-import project1 from "../assets/project1.png";
-import project2 from "../assets/project2.png";
-import project3 from "../assets/project3.png";
-import project4 from "../assets/project4.png";
-import project5 from "../assets/project5.png";
-import project6 from "../assets/project6.png";
-import arrow from "../assets/cursor.png";
+import { useState } from "react";
+import { useLanguage } from "../context/languageContext";
+import { projects } from "../data/projects";
+import { projectsTranslations } from "../data/projectsTranslations";
+import SmartImage from "./SmartImage";
+import ToolIcon from "./ToolIcon";
 import { AiFillGithub } from "react-icons/ai";
-import { DiReact, DiJavascript, DiHtml5, DiCss3 } from "react-icons/di";
-import { SiLeaflet } from "react-icons/si";
-
-const projects = [
-  {
-    img: project1,
-    title: "World Wise",
-    description: "WorldWise keeps track of your adventures.",
-    tools: [<DiReact />, <DiCss3 />, <SiLeaflet />],
-    links: {
-      site: "https://worldwise-r.netlify.app/",
-      github: "https://github.com/mousaab37/worldwise",
-    },
-  },
-  {
-    img: project2,
-    title: "Mapty",
-    description: "A Javascript map application to Map your workout.",
-    tools: [<DiHtml5 />, <DiCss3 />, <DiJavascript />, <SiLeaflet />],
-    links: {
-      site: "https://mousaab37.github.io/mapty/",
-      github: "https://github.com/mousaab37/mapty",
-    },
-  },
-  {
-    img: project3,
-    title: "usePopcorn",
-    description: "A website to find and save your favorite movies.",
-    tools: [<DiReact />, <DiCss3 />],
-    links: {
-      site: "https://use-popcorn-react1.netlify.app/",
-      github: "https://github.com/mousaab37/usepopcorn",
-    },
-  },
-  {
-    img: project4,
-    title: "First Portfolio",
-    description: "This is my first portfolio - modern and simple",
-    tools: [<DiReact />, <DiCss3 />],
-    links: {
-      github: "https://github.com/mousaab37/first-portofolio",
-    },
-  },
-  {
-    img: project5,
-    title: "Bankist",
-    description: "A simpler banking experience for a simpler life.",
-    tools: [<DiHtml5 />, <DiCss3 />, <DiJavascript />],
-    links: {
-      site: "https://mousaab37.github.io/Bankist/",
-      github: "https://github.com/mousaab37/Bankist",
-    },
-  },
-  {
-    img: project6,
-    title: "Kasper",
-    description: "A demo landing page for a fake company.",
-    tools: [<DiHtml5 />, <DiCss3 />],
-    links: {
-      site: "https://mousaab37.github.io/Kasper/",
-      github: "https://github.com/mousaab37/Kasper",
-    },
-  },
-];
-
-import { useLanguage } from "../context/languageContext"; // Added for language support
 
 const Portfolio = () => {
   const [currentProject, setCurrentProject] = useState(0);
   const { language } = useLanguage();
 
-  const translations = {
-    en: {
-      selectProject: "Select Project",
-      demo: "Demo",
-      projects: [
-        {
-          title: "World Wise",
-          description: "WorldWise keeps track of your adventures.",
-        },
-        {
-          title: "Mapty",
-          description: "A Javascript map application to Map your workout.",
-        },
-        {
-          title: "usePopcorn",
-          description: "A website to find and save your favorite movies.",
-        },
-        {
-          title: "First Portfolio",
-          description: "This is my first portfolio - modern and simple",
-        },
-        {
-          title: "Bankist",
-          description: "A simpler banking experience for a simpler life.",
-        },
-        {
-          title: "Kasper",
-          description: "A demo landing page for a fake company.",
-        },
-      ],
-    },
-    ar: {
-      selectProject: "اختر المشروع",
-      demo: "عرض مباشر",
-      projects: [
-        {
-          title: "World Wise",
-          description: "تطبيق لتتبع مغامراتك ورحلاتك حول العالم.",
-        },
-        {
-          title: "Mapty",
-          description: "تطبيق جافا سكريبت لرسم خرائط تمارينك الرياضية.",
-        },
-        {
-          title: "usePopcorn",
-          description: "موقع للبحث عن أفلامك المفضلة وحفظها.",
-        },
-        {
-          title: "أول معرض أعمال",
-          description: "هذا هو أول معرض أعمال قمت ببرمجته - عصري وبسيط.",
-        },
-        {
-          title: "Bankist",
-          description: "تجربة مصرفية أبسط لحياة أسهل.",
-        },
-        {
-          title: "Kasper",
-          description: "صفحة هبوط تجريبية لشركة.",
-        },
-      ],
-    },
-  };
-
-  const t = translations[language];
+  const t = projectsTranslations[language];
+  const project = projects[currentProject];
+  const projectTr = t.projects[project.id];
 
   return (
     <div
       className="my-6 max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-8 gap-6"
       id="portfolio"
     >
-      <div className="relative z-10 col-span-1 md:col-span-3 grid place-items-center">
+      {/* Left column: project picker */}
+      <div className="relative z-10 grid col-span-1 md:col-span-3 place-items-center">
         <p className="text-gray-200 md:mb-[-100px] mb-10 font-bold text-4xl -skew-y-6">
-          {t.selectProject}
+          {t.ui.selectProject}
         </p>
-        <img
-          src={arrow}
-          className={`absolute hidden md:block w-[100px] top-24 ${language === "en" ? "right-9" : "left-9 transform scale-x-[-1]"}`} // Flip arrow for RTL
+        <SmartImage
+          src="/cursor.webp"
           alt="arrow"
-          loading="lazy"
+          width={100}
+          height={100}
+          className={`absolute hidden md:block w-[100px] top-24 ${
+            language === "en" ? "right-9" : "left-9 transform scale-x-[-1]"
+          }`} // Flip arrow for RTL
+          sizes="100px"
         />
-        <ul className="ml-6 mr-6 flex flex-row md:flex-col gap-6 flex-wrap justify-center md:gap-1 mb-11 md:space-y-4 text-2xl">
-          {projects.map((project, index) => (
-            <li
-              key={index}
-              onClick={() => setCurrentProject(index)}
-              className={`cursor-pointer text-gray-300 ${
-                currentProject === index ? "active-project" : ""
-              }`}
-            >
-              {t.projects[index].title}
-            </li>
-          ))}
-        </ul>
+        <div className="w-full flex flex-col gap-6 px-6 mt-16 md:mt-32 text-left rtl:text-right z-10">
+          {/* Client Work Group */}
+          <div>
+            <h4 className="text-xs font-bold text-orange-400 uppercase tracking-widest mb-3 border-b border-white/10 pb-1">
+              {t.ui.clientWork}
+            </h4>
+            <ul className="flex flex-row flex-wrap gap-4 text-xl md:flex-col md:gap-2 mb-4">
+              {projects.map((p, index) => {
+                if (p.kind !== "client") return null;
+                return (
+                  <li
+                    key={p.id}
+                    onClick={() => setCurrentProject(index)}
+                    className={`cursor-pointer text-gray-300 transition-colors hover:text-white ${
+                      currentProject === index ? "active-project text-white font-bold" : ""
+                    }`}
+                  >
+                    {t.projects[p.id].title}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {/* Practice Projects Group */}
+          <div>
+            <h4 className="text-xs font-bold text-orange-400 uppercase tracking-widest mb-3 border-b border-white/10 pb-1">
+              {t.ui.practiceProjects}
+            </h4>
+            <ul className="flex flex-row flex-wrap gap-4 text-xl md:flex-col md:gap-2 mb-4">
+              {projects.map((p, index) => {
+                if (p.kind === "client") return null;
+                return (
+                  <li
+                    key={p.id}
+                    onClick={() => setCurrentProject(index)}
+                    className={`cursor-pointer text-gray-300 transition-colors hover:text-white ${
+                      currentProject === index ? "active-project text-white font-bold" : ""
+                    }`}
+                  >
+                    {t.projects[p.id].title}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div className="z-10 glass p-6 w-full col-span-1 md:col-span-5">
-        <div className="w-full h-80 mb-4">
-          <img
-            src={projects[currentProject].img}
-            alt={t.projects[currentProject].title}
-            className="w-full h-full object-cover rounded-lg mx-auto"
-            loading="lazy"
+      {/* Right column: active project detail */}
+      <div className="z-10 w-full col-span-1 p-6 glass rounded-2xl md:col-span-5">
+        <div className="w-full mb-4 h-80">
+          <SmartImage
+            src={project.image}
+            alt={projectTr.title}
+            className="object-cover w-full h-full mx-auto rounded-xl"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
+
         <div className="p-6">
-          <div className="flex space-x-2 rtl:space-x-reverse mb-4">
-            {projects[currentProject].tools.map((tool, index) => (
-              <span
-                key={index}
-                className="flex text-3xl items-center text-gray-300"
-              >
-                {tool}
+          <div className="flex mb-4 space-x-2 rtl:space-x-reverse">
+            {project.tools.map((tool) => (
+              <span key={tool} className="flex items-center">
+                <ToolIcon name={tool} />
               </span>
             ))}
           </div>
 
-          <p className="text-gray-200 my-4 ">
-            {t.projects[currentProject].description}
-          </p>
+          {projectTr.context && (
+            <p className="text-sm text-purple-300 mb-1">
+              {projectTr.context}
+            </p>
+          )}
+
+          <p className="my-4 text-gray-200">{projectTr.description}</p>
 
           <div className="flex space-x-4 rtl:space-x-reverse">
-            {projects[currentProject].links.site && (
+            {project.links.site && (
               <a
-                href={projects[currentProject].links.site}
+                href={project.links.site}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300"
+                className="px-4 py-2 text-gray-200 transition duration-300 rounded-xl bg-gradient-to-r from-[#7a0d8a] to-[#c92085] hover:from-[#8b1fa0] hover:to-[#db3296]"
               >
-                {t.demo}
+                {project.kind === "client" ? t.ui.live : t.ui.demo}
               </a>
             )}
-            <a
-              href={projects[currentProject].links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 text-2xl bg-slate-600 text-gray-200 rounded-lg hover:bg-slate-700 transition duration-300"
-            >
-              <AiFillGithub />
-            </a>
+            {project.links.github && (
+              <a
+                href={project.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 text-2xl text-gray-200 transition duration-300 rounded-xl bg-gradient-to-r from-[#7a0d8a] to-[#c92085] hover:from-[#8b1fa0] hover:to-[#db3296]"
+              >
+                <AiFillGithub />
+              </a>
+            )}
           </div>
         </div>
       </div>

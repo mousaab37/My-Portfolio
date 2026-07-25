@@ -6,11 +6,22 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-plane.md
+
+# Build output
 node_modules
 dist
 dist-ssr
 *.local
+
+# AI / scratch / planning notes — never commit these
+plane.md
+fix.md
+plan.md
+todo.md
+notes.md
+TODO
+TODO.md
+*.agent-notes.md
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +33,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Build analysis (regenerated on every `npm run build`)
+dist/stats.html
